@@ -243,9 +243,10 @@ function setup() {
     checkbox2.parent("canvas");
     checkbox2.changed(myCheckedEvent2);
     
-    checkbox3 = createCheckbox(' Afficher la courbe moyenne', false);
+    checkbox3 = createCheckbox(' Afficher la courbe moyenne 2008-2017', false);
     checkbox3.parent("canvas");
     checkbox3.changed(myCheckedEvent3);
+    checkbox3.style('color', '#ff0000')
 
     but = createButton("Plus d'infos");
     but.parent("canvas");
@@ -284,12 +285,12 @@ function myCheckedEvent2() {
 function myCheckedEvent3() {
   if (this.checked()) {
     console.log('Checking!');
-    show_all_curve = true;
     show_curve2 = true;
   } else {
     console.log('Unchecking!');
-    show_all_curve = false;
+    show_curve2 = false;
   }
+  initialize(sel.value());
 }
 
 function keyTyped() {
@@ -312,13 +313,13 @@ months = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aou
 function unit(){
     let str;
     if (item == "Nitrates"){
-      str = "(&micro mol/L)";
+      str = "(μmol/L)";
   }
   else if (item == "Température") {
     str = "°C";
   }
   else if (item == "Salinité") {
-    str = "(&micro mol/L)";
+    str = "(μmol/L)";
   }
   else if (item == "pH") {
     str = "";
@@ -330,7 +331,7 @@ function unit(){
     str = "(mL/L)";
   }
   else if (item == "Chlorophylle") {
-    str = "(&micro g/L)";
+    str = "(μg/L)";
   }
   
   return str;
@@ -366,12 +367,12 @@ function draw() {
           draw_thermometer();
       }
   
-      textSize(15);
+      textSize(16);
       fill(15);
       noStroke();
   
       for(let i=0;i<12;i++){
-          text(months[i],map(i,0,n-1,margin,cnv.width-margin)-20,cnv.height-15);
+          text(months[i],map(i,0,n-1,margin,cnv.width-margin)-25,cnv.height-15);
       }
       
       let str = unit();
@@ -385,13 +386,13 @@ function draw() {
       fill(255);
       text(v2,12,posmax+2);
       text(v1,12,cnv.height-posmin+2);
-      text(str,7,7);
+      text(str,7,25);
       
       //stroke(0);
       fill(0);
       text(v2,10,posmax);
       text(v1,10,cnv.height-posmin);
-      text(str,5,5);
+      text(str,5,23);
       
       
     }
@@ -481,7 +482,7 @@ function drawCurve2(){
             activation = 1;
         }
 
-        stroke(35,100*activation);
+        stroke(255,0,0,100*activation);
 
         if(item=="Température"){
             //console.log("Here!\n");
@@ -506,10 +507,10 @@ function drawCurve2(){
       let y = transform(meanArray[i]);
       let af = exp(-abs(x-mouseX)/25.0);
       
-      fill(0,af*255);
+      fill(255,0,0,af*255);
       noStroke();
       
-      text(floor(precision*meanArray[i])/precision,x-7,y+13);
+      text(floor(precision*meanArray[i])/precision,x+7,y+13);
     }
 
     strokeWeight(4.0);
@@ -523,7 +524,7 @@ function drawCurve2(){
         if(show_all_curve){
             activation = 1;
         }
-        stroke(15,255*activation);
+        stroke(255,0,0,255*activation);
         
         point(x,y);
     }
