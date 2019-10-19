@@ -194,14 +194,10 @@ function initialize(item){
 }
 
 function setup() {
-  
-
-
-  
     sel = createSelect();
     sel.parent("selector");
 
-    cnv = createCanvas(1000,500);
+    cnv = createCanvas(1000,370);
     cnv.parent('canvas');
     background('#e0f7fa');
 
@@ -209,11 +205,10 @@ function setup() {
     //sel.position(10, 10);
 
 
-
-    sel.option("Nitrates");
     sel.option("Température");
-    sel.option("Salinité");
+    sel.option("Nitrates");
     sel.option("Chlorophylle");
+    sel.option("Salinité");
     sel.option("pH");
     sel.option("Oxygène");
     sel.option("Matières en suspension");
@@ -240,16 +235,16 @@ function setup() {
     
 
     checkbox2 = createCheckbox(' Afficher la courbe', false);
-    checkbox2.parent("canvas");
+    checkbox2.parent("divButton");
     checkbox2.changed(myCheckedEvent2);
     
     checkbox3 = createCheckbox(' Afficher la courbe moyenne 2008-2017', false);
-    checkbox3.parent("canvas");
+    checkbox3.parent("divButton");
     checkbox3.changed(myCheckedEvent3);
     checkbox3.style('color', '#ff0000')
 
     but = createButton("Plus d'infos");
-    but.parent("canvas");
+    but.parent("divButton");
     but.mouseClicked(displayInfos);
 
 
@@ -337,6 +332,38 @@ function unit(){
   return str;
 }
 
+function currentValue(){
+    let str;
+    if (item == "Nitrates"){
+      str = "";
+  }
+  else if (item == "Température") {
+    str = "15,42";
+  }
+  else if (item == "Salinité") {
+    str = "34,91";
+  }
+  else if (item == "pH") {
+    str = "7,97";
+  }
+  else if (item == "Matières en suspension") {
+    str = "5";
+  }
+  else if (item == "Oxygène") {
+    str = "5,42";
+  }
+  else if (item == "Chlorophylle") {
+    str = "0,4";
+  }
+  
+  let prefix= "";
+  if(item!="Nitrates"){
+    prefix = "Aujourd'hui à 6h00 : ";
+  }
+  
+  return prefix+str;
+}
+
 var nothingyet = true;
 
 function draw() {
@@ -376,6 +403,7 @@ function draw() {
       }
       
       let str = unit();
+      let str2 = currentValue();
       
       //stroke(255);
       let precision = 1000.0;
@@ -388,15 +416,20 @@ function draw() {
       text(v1,12,cnv.height-posmin+2);
       text(str,7,25);
       
+      text(str2,cnv.width*0.75,30);
+      
       //stroke(0);
       fill(0);
       text(v2,10,posmax);
       text(v1,10,cnv.height-posmin);
       text(str,5,23);
       
+      text(str2,cnv.width*0.75,30);
       
     }
 }
+
+
 
 function transform(v){
     return map(v,valmin,valmax,cnv.height-posmin,posmax);
@@ -483,7 +516,7 @@ function drawCurve2(){
         }
 
         stroke(255,0,0,100*activation);
-
+/*
         if(item=="Température"){
             //console.log("Here!\n");
             let from = color(50, 50, 50, 200*activation);
@@ -492,7 +525,7 @@ function drawCurve2(){
             let inter = lerpColor(from,to,1.2*map(h,valmin,valmax,0,1));
             //console.log(inter);
             stroke(inter);
-        }
+        }*/
 
         line(x1,y1,x2,y2);
 
@@ -531,7 +564,7 @@ function drawCurve2(){
 }
 
 
-var item = "Nitrates";
+var item = "Température";
 
 function mySelectEvent() {
   item = sel.value();

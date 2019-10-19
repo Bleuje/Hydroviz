@@ -93,7 +93,7 @@ body {
   align-items: center;
 }
 
-#canvas , #selector{
+#canvas , #selector , #divButton{
   display: flex;
   flex-direction: column;
   justify-content:flex-end;
@@ -102,8 +102,9 @@ body {
   width: 100%;
 }
 
+
 #canvas {
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 #selector select {
@@ -149,4 +150,9 @@ form {
 
 checkbox {
 	font-size: 30px;
+}
+
+h5 {
+	font-size: 20px;
+	color: green;
 }
