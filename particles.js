@@ -61,7 +61,7 @@ function particles(height,xpos,type) {
                     
                     let y = transform(H2)+dy;
                     push();
-                    translate(this.x+dx,lerp(cnv.height,y,pow(activation,0.5)));
+                    translate(this.x+dx,y);
                     this.bub[i].show(H/(this.h+0.001));
                     pop();
                 }
