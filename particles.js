@@ -58,7 +58,7 @@ function particles(height,xpos,type) {
                     let dy = map(noise2.simplex2(123+i,0.1*changerate*frameCount),-0.5,0.5,-noiseAmplitude2,noiseAmplitude2);
                     let y = transform(H)+dy;
                     push();
-                    translate(this.x+dx,y);
+                    translate(this.x+dx,lerp(cnv.height,y,pow(activation,0.5)));
                     this.bub[i].show(H/(this.h+0.001));
                     pop();
                 }
@@ -70,7 +70,7 @@ function particles(height,xpos,type) {
                     let dx = map(noise2.simplex2(i,0.1*changerate*frameCount),-0.5,0.5,-1.3*noiseAmplitude2,1.3*noiseAmplitude2);
                     let dy = map(noise2.simplex2(123+i,0.1*changerate*frameCount),-0.5,0.5,-1.3*noiseAmplitude2,1.3*noiseAmplitude2);
                     let y = transform(H)+dy;
-                    point(this.x+dx,lerp(cnv.height,y,activation));
+                    point(this.x+dx,lerp(cnv.height,y,pow(activation,0.5)));
                 }
             }
         }
