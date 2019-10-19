@@ -485,7 +485,7 @@ function drawCurve2(){
       text(floor(precision*meanArray[i])/precision,x+7,y+13);
     }
 
-    strokeWeight(4.0);
+    strokeWeight(5.0);
     stroke(15,15,220);
 
     for(let i=0;i<n;i++){
