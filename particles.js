@@ -56,7 +56,10 @@ function particles(height,xpos,type) {
                     noise2.seed(this.seed*i*1.6125);
                     let dx = map(noise2.simplex2(i,0.1*changerate*frameCount),-0.5,0.5,-noiseAmplitude2,noiseAmplitude2);
                     let dy = map(noise2.simplex2(123+i,0.1*changerate*frameCount),-0.5,0.5,-noiseAmplitude2,noiseAmplitude2);
-                    let y = transform(H)+dy;
+                    
+                    let H2 = lerp(valmin - 0.2*(valmax-valmin),this.h,activation);
+                    
+                    let y = transform(H2)+dy;
                     push();
                     translate(this.x+dx,lerp(cnv.height,y,pow(activation,0.5)));
                     this.bub[i].show(H/(this.h+0.001));
