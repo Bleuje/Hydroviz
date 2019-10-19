@@ -65,8 +65,8 @@ function particles(height,xpos,type) {
                 strokeWeight(7.0);
                 for(let i=0;i<this.m;i++){
                     noise2.seed(this.seed*i*1.6125);
-                    let dx = map(noise2.simplex2(i,0.1*changerate*frameCount),-0.5,0.5,-noiseAmplitude2,noiseAmplitude2);
-                    let dy = map(noise2.simplex2(123+i,0.1*changerate*frameCount),-0.5,0.5,-noiseAmplitude2,noiseAmplitude2);
+                    let dx = map(noise2.simplex2(i,0.1*changerate*frameCount),-0.5,0.5,-1.3*noiseAmplitude2,1.3*noiseAmplitude2);
+                    let dy = map(noise2.simplex2(123+i,0.1*changerate*frameCount),-0.5,0.5,-1.3*noiseAmplitude2,1.3*noiseAmplitude2);
                     let y = transform(H)+dy;
                     point(this.x+dx,y);
                 }
