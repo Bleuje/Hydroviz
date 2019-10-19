@@ -35,7 +35,9 @@ function particles(height,xpos,type) {
             
             smooth();
             
-            let H = this.h*constrain(map(mouseX-this.x+0.75*mouseWidth,0,mouseWidth,type=="nitrates"?-0.5:-0.2,1),0,1);
+            let bottom = type=="nitrates"?-0.5:-0.1;
+            
+            let H = this.h*constrain(map(mouseX-this.x+0.75*mouseWidth,0,mouseWidth,bottom,1),bottom,1);
             
             
             
