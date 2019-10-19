@@ -34,71 +34,20 @@ const posmax = 50;
 
 var valmin = 50;
 var valmax = 350;
-/*
-function initialize(item){
-    removeEvent();
-    divTxt = document.getElementById('textInfos');
-    divTxt.innerHTML = '';
-    if(item=="Nitrates"){
-        for(let i=0;i<n;i++){
-            let x = map(i,0,n-1,margin,cnv.width-margin);
-            array[i] = new algae(random(100,300),x);
-        }
-    } else if(item=="Matières en suspension"){
-        for(let i=0;i<n;i++){
-            let x = map(i,0,n-1,margin,cnv.width-margin);
-            let test = new particles(random(50,350),x,"suspension");
-            array[i] = test;
-        }
-    } else if(item=="Oxygène"){
-        for(let i=0;i<n;i++){
-            let x = map(i,0,n-1,margin,cnv.width-margin);
-            let test = new particles(random(50,350),x,"oxygene");
-            array[i] = test;
-        }
-    } else if(item=="Chlorophylle"){
-        for(let i=0;i<n;i++){
-            let x = map(i,0,n-1,margin,cnv.width-margin);
-            let test = new algae(random(50,350),x,"chlorophyll");
-            array[i] = test;
-        }
-    } else if(item=="pH"){
-        for(let i=0;i<n;i++){
-            let x = map(i,0,n-1,margin,cnv.width-margin);
-            let test = new phrectangle(random(50,350),x);
-            array[i] = test;
-        }
-    } else if(item=="Salinité"){
-        for(let i=0;i<n;i++){
-            let x = map(i,0,n-1,margin,cnv.width-margin);
-            let test = new salt(random(50,350),x);
-            array[i] = test;
-        }
-    } else if(item=="Température"){
-        for(let i=0;i<n;i++){
-            let x = map(i,0,n-1,margin,cnv.width-margin);
-            let test = new temperature_value(random(50,350),x);
-            array[i] = test;
-        }
-    }
-}
-*/
+
 
 function setMinMax(keyWord){
   console.log("valmin",valmin,"valmax",valmax);
   valmin = 100000000;
   valmax = -1;
   for(let i=0;i<n;i++){
-    //console.log("all data",all_data);
-    //console.log("data",all_data.data);
+
     let value = all_data.data[249-11+i-arrayOffset][keyWord];
-    //console.log(value);
+
     valmin = Math.min(value,valmin);
     valmax = Math.max(value,valmax);
-    //console.log("valmin",valmin,"valmax",valmax);
+
   }
-  //valmin = mn;
-  //valmax = mx;
 }
 
 var year = 2018;
@@ -201,10 +150,6 @@ function setup() {
     cnv.parent('canvas');
     background('#e0f7fa');
 
-
-    //sel.position(10, 10);
-
-
     sel.option("Température");
     sel.option("Nitrates");
     sel.option("Chlorophylle");
@@ -303,7 +248,7 @@ function removeEvent() {
     }
 }
 
-months = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"]
+months = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"];
 
 function unit(){
     let str;
@@ -358,7 +303,7 @@ function currentValue(){
   
   let prefix= "";
   if(item!="Nitrates"){
-    prefix = "Aujourd'hui à 6h00 : ";
+    prefix = "Aujourd'hui à 6h00 (*) : ";
   }
   
   return prefix+str;
