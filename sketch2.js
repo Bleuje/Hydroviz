@@ -437,7 +437,7 @@ function drawCurve(){
     }
 }
 
-int M = 10;
+let M = 10;
 
 function line2(x1,y1,x2,y2){
   for(let i=0;i<=M;i++){
