@@ -254,7 +254,7 @@ function unit(){
       str = "(μmol/L)";
   }
   else if (item == "Température") {
-    str = "°C";
+    str = "(°C)";
   }
   else if (item == "Salinité") {
     str = "(μmol/L)";
