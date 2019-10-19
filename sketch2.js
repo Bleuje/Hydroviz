@@ -392,7 +392,7 @@ function drawCurve(){
         }
 
         stroke(240,0,0,150*activation);
-
+/*
         if(item=="Température"){
 
             let from = color(50, 50, 50, 200*activation);
@@ -401,7 +401,7 @@ function drawCurve(){
             let inter = lerpColor(from,to,1.2*map(h,valmin,valmax,0,1));
 
             stroke(inter);
-        }
+        }*/
 
         line(x1,y1,x2,y2);
 
@@ -431,7 +431,7 @@ function drawCurve(){
         if(show_all_curve){
             activation = 1;
         }
-        stroke(15,255*activation);
+        stroke(255,0,0,255*activation);
         
         point(x,y);
     }
