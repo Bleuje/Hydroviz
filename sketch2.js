@@ -80,7 +80,7 @@ function initialize(item){
         setMinMax(keyWord);
         for(let i=0;i<n;i++){
             let x = map(i,0,n-1,margin,cnv.width-margin);
-            array[i] = new algae(all_data.data[249-11+i-arrayOffset][keyWord],x);
+            array[i] = new particles(all_data.data[249-11+i-arrayOffset][keyWord],x,"nitrates");
         }
         setMeanArray(keyWord);
     } else if(item=="Matières en suspension"){

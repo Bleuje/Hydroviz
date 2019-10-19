@@ -37,10 +37,11 @@ function particles(height,xpos,type) {
             
             let H = this.h*constrain(map(mouseX-this.x+0.75*mouseWidth,0,mouseWidth,0,1),0,1);
             
-            stroke(150,75,0,200);
-            strokeWeight(4.0);
+            
             
             if(type=="suspension"){
+                stroke(150,75,0,200);
+                strokeWeight(4.0);
                 for(let i=0;i<this.m;i++){
                     noise2.seed(this.seed*i*1.6125);
                     let dx = map(noise2.simplex2(i,0.1*changerate*frameCount),-0.5,0.5,-noiseAmplitude2,noiseAmplitude2);
@@ -58,6 +59,16 @@ function particles(height,xpos,type) {
                     translate(this.x+dx,y);
                     this.bub[i].show(H/(this.h+0.001));
                     pop();
+                }
+            } else if(type=="nitrates"){
+                stroke(230,25,25,230);
+                strokeWeight(7.0);
+                for(let i=0;i<this.m;i++){
+                    noise2.seed(this.seed*i*1.6125);
+                    let dx = map(noise2.simplex2(i,0.1*changerate*frameCount),-0.5,0.5,-noiseAmplitude2,noiseAmplitude2);
+                    let dy = map(noise2.simplex2(123+i,0.1*changerate*frameCount),-0.5,0.5,-noiseAmplitude2,noiseAmplitude2);
+                    let y = transform(H)+dy;
+                    point(this.x+dx,y);
                 }
             }
         }
