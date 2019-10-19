@@ -35,9 +35,9 @@ function particles(height,xpos,type) {
             
             smooth();
             
-            let bottom = type=="nitrates"?-0.5:-0.1;
+            let activation = constrain(map(mouseX-this.x+0.75*mouseWidth,0,mouseWidth,0,1),0,1);
             
-            let H = this.h*constrain(map(mouseX-this.x+0.75*mouseWidth,0,mouseWidth,bottom,1),bottom,1);
+            let H = this.h*constrain(map(mouseX-this.x+0.75*mouseWidth,0,mouseWidth,0,1),0,1);
             
             
             
@@ -70,7 +70,7 @@ function particles(height,xpos,type) {
                     let dx = map(noise2.simplex2(i,0.1*changerate*frameCount),-0.5,0.5,-1.3*noiseAmplitude2,1.3*noiseAmplitude2);
                     let dy = map(noise2.simplex2(123+i,0.1*changerate*frameCount),-0.5,0.5,-1.3*noiseAmplitude2,1.3*noiseAmplitude2);
                     let y = transform(H)+dy;
-                    point(this.x+dx,y);
+                    point(this.x+dx,lerp(cnv.height,y,activation));
                 }
             }
         }
