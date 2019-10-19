@@ -3,7 +3,7 @@ const changerate = 0.012;
 
 function bubble(){
     this.sz = random(2,10);
-    this.alpha = random(50,200);
+    this.alpha = random(80,250);
     
     this.show = function(f){
         stroke(150,150,255,this.alpha*f);
