@@ -37,6 +37,7 @@ var valmax = 350;
 
 
 function setMinMax(keyWord){
+  //console.log("valmin",valmin,"valmax",valmax);
   valmin = 100000000;
   valmax = -1;
   for(let i=0;i<n;i++){
@@ -390,7 +391,7 @@ function drawCurve(){
             activation = 1;
         }
 
-        stroke(35,100*activation);
+        stroke(240,0,0,150*activation);
 
         if(item=="Température"){
 
