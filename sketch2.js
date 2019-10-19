@@ -377,9 +377,9 @@ function transform(v){
 }
 
 function drawCurve(){
-    stroke(35,100);
+    stroke(240,0,0,200);
     noFill();
-    strokeWeight(2.0);
+    strokeWeight(3.0);
 
     for(let i=0;i<n-1;i++){
         let x1 = map(i,0,n-1,margin,cnv.width-margin);
@@ -420,8 +420,8 @@ function drawCurve(){
       text(floor(precision*array[i].h)/precision,x+7,y-12);
     }
 
-    strokeWeight(4.0);
-    stroke(15);
+    strokeWeight(5.0);
+    stroke(240,0,0);
 
     for(let i=0;i<n;i++){
         let x = map(i,0,n-1,margin,cnv.width-margin);
@@ -435,6 +435,20 @@ function drawCurve(){
         
         point(x,y);
     }
+}
+
+int M = 10;
+
+function line2(x1,y1,x2,y2){
+  for(let i=0;i<=M;i++){
+    let p = 1.0*i/M;
+    
+    let x = lerp(x1,x2,p);
+    let y = lerp(y1,y2,p);
+    
+    point(x,y);
+  }
+  
 }
 
 function drawCurve2(){
@@ -452,9 +466,9 @@ function drawCurve2(){
             activation = 1;
         }
 
-        stroke(255,0,0,100*activation);
+        stroke(25,200*activation);
 
-        line(x1,y1,x2,y2);
+        line2(x1,y1,x2,y2);
 
     }
     
@@ -482,7 +496,7 @@ function drawCurve2(){
         if(show_all_curve){
             activation = 1;
         }
-        stroke(255,0,0,255*activation);
+        stroke(25,200*activation);
         
         point(x,y);
     }
@@ -592,7 +606,7 @@ function displayInfos(){
     txt.parent("textInfos");
   }
   else if (item == "Température") {
-    txt = createP('La température peut directement modifier la survie des espèces dans leur écosystème. Le réchauffement de l’air provoque le réchauffement de l’eau, qui impacte la production de la faune et la flore marines.');
+    let txt = createP('La température peut directement modifier la survie des espèces dans leur écosystème. Le réchauffement de l’air provoque le réchauffement de l’eau, qui impacte la production de la faune et la flore marines.');
     txt.parent("textInfos");
   }
   else if (item == "Salinité") {
