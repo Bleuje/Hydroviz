@@ -34,71 +34,18 @@ const posmax = 50;
 
 var valmin = 50;
 var valmax = 350;
-/*
-function initialize(item){
-    removeEvent();
-    divTxt = document.getElementById('textInfos');
-    divTxt.innerHTML = '';
-    if(item=="Nitrates"){
-        for(let i=0;i<n;i++){
-            let x = map(i,0,n-1,margin,cnv.width-margin);
-            array[i] = new algae(random(100,300),x);
-        }
-    } else if(item=="Matières en suspension"){
-        for(let i=0;i<n;i++){
-            let x = map(i,0,n-1,margin,cnv.width-margin);
-            let test = new particles(random(50,350),x,"suspension");
-            array[i] = test;
-        }
-    } else if(item=="Oxygène"){
-        for(let i=0;i<n;i++){
-            let x = map(i,0,n-1,margin,cnv.width-margin);
-            let test = new particles(random(50,350),x,"oxygene");
-            array[i] = test;
-        }
-    } else if(item=="Chlorophylle"){
-        for(let i=0;i<n;i++){
-            let x = map(i,0,n-1,margin,cnv.width-margin);
-            let test = new algae(random(50,350),x,"chlorophyll");
-            array[i] = test;
-        }
-    } else if(item=="pH"){
-        for(let i=0;i<n;i++){
-            let x = map(i,0,n-1,margin,cnv.width-margin);
-            let test = new phrectangle(random(50,350),x);
-            array[i] = test;
-        }
-    } else if(item=="Salinité"){
-        for(let i=0;i<n;i++){
-            let x = map(i,0,n-1,margin,cnv.width-margin);
-            let test = new salt(random(50,350),x);
-            array[i] = test;
-        }
-    } else if(item=="Température"){
-        for(let i=0;i<n;i++){
-            let x = map(i,0,n-1,margin,cnv.width-margin);
-            let test = new temperature_value(random(50,350),x);
-            array[i] = test;
-        }
-    }
-}
-*/
+
 
 function setMinMax(keyWord){
   console.log("valmin",valmin,"valmax",valmax);
   valmin = 100000000;
   valmax = -1;
   for(let i=0;i<n;i++){
-    //console.log("all data",all_data);
-    //console.log("data",all_data.data);
     let value = all_data.data[249-11+i-arrayOffset][keyWord];
-    //console.log(value);
+
     valmin = Math.min(value,valmin);
     valmax = Math.max(value,valmax);
-    //console.log("valmin",valmin,"valmax",valmax);
   }
-  //valmin = mn;
-  //valmax = mx;
 }
 
 var year = 2018;
@@ -201,10 +148,6 @@ function setup() {
     cnv.parent('canvas');
     background('#e0f7fa');
 
-
-    //sel.position(10, 10);
-
-
     sel.option("Température");
     sel.option("Nitrates");
     sel.option("Chlorophylle");
@@ -241,7 +184,7 @@ function setup() {
     checkbox3 = createCheckbox(' Afficher la courbe moyenne 2008-2017', false);
     checkbox3.parent("divButton");
     checkbox3.changed(myCheckedEvent3);
-    checkbox3.style('color', '#ff0000')
+    checkbox3.style('color', '#ff0000');
 
     but = createButton("Plus d'infos");
     but.parent("divButton");
@@ -358,7 +301,7 @@ function currentValue(){
   
   let prefix= "";
   if(item!="Nitrates"){
-    prefix = "Aujourd'hui à 6h00 : ";
+    prefix = "Aujourd'hui à 6h00 (*) : ";
   }
   
   return prefix+str;
@@ -367,9 +310,7 @@ function currentValue(){
 var nothingyet = true;
 
 function draw() {
-    //background(30,50,180);
-    
-    
+
     if(data_loaded&&nothingyet){
       initialize(sel.value()); //fait pleins de choses canvas avant initialize
       nothingyet = false;
@@ -440,7 +381,6 @@ function drawCurve(){
     noFill();
     strokeWeight(2.0);
 
-    //beginShape();
     for(let i=0;i<n-1;i++){
         let x1 = map(i,0,n-1,margin,cnv.width-margin);
         let x2 = map(i+1,0,n-1,margin,cnv.width-margin);
@@ -454,20 +394,18 @@ function drawCurve(){
         stroke(35,100*activation);
 
         if(item=="Température"){
-            //console.log("Here!\n");
+
             let from = color(50, 50, 50, 200*activation);
             let to = color(255,50,0,200*activation);
             let h = (array[i].h+array[i+1].h)/2;
             let inter = lerpColor(from,to,1.2*map(h,valmin,valmax,0,1));
-            //console.log(inter);
+
             stroke(inter);
         }
 
         line(x1,y1,x2,y2);
 
-        //vertex(x,y);
     }
-    //endShape();
     
     let precision = 1000.0;
     
@@ -504,7 +442,6 @@ function drawCurve2(){
     noFill();
     strokeWeight(3.0);
 
-    //beginShape();
     for(let i=0;i<n-1;i++){
         let x1 = map(i,0,n-1,margin,cnv.width-margin);
         let x2 = map(i+1,0,n-1,margin,cnv.width-margin);
@@ -516,22 +453,10 @@ function drawCurve2(){
         }
 
         stroke(255,0,0,100*activation);
-/*
-        if(item=="Température"){
-            //console.log("Here!\n");
-            let from = color(50, 50, 50, 200*activation);
-            let to = color(255,50,0,200*activation);
-            let h = (meanArray[i]+meanArray[i+1])/2;
-            let inter = lerpColor(from,to,1.2*map(h,valmin,valmax,0,1));
-            //console.log(inter);
-            stroke(inter);
-        }*/
 
         line(x1,y1,x2,y2);
 
-        //vertex(x,y);
     }
-    //endShape();
     
     let precision = 1000.0;
     
