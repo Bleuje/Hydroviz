@@ -414,7 +414,7 @@ function drawCurve(){
       let y = transform(array[i].h);
       let af = exp(-abs(x-mouseX)/25.0);
       
-      fill(0,af*255);
+      fill(255,0,0,af*255);
       noStroke();
       
       text(floor(precision*array[i].h)/precision,x+7,y-12);
@@ -479,7 +479,7 @@ function drawCurve2(){
       let y = transform(meanArray[i]);
       let af = exp(-abs(x-mouseX)/25.0);
       
-      fill(255,0,0,af*255);
+      fill(0,af*255);
       noStroke();
       
       text(floor(precision*meanArray[i])/precision,x+7,y+13);
