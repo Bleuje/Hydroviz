@@ -184,7 +184,7 @@ function setup() {
     checkbox3 = createCheckbox(' Afficher la courbe moyenne 2008-2017', false);
     checkbox3.parent("divButton");
     checkbox3.changed(myCheckedEvent3);
-    checkbox3.style('color', '#ff0000');
+    //checkbox3.style('color', '#ff0000');
 
     but = createButton("Plus d'infos");
     but.parent("divButton");
